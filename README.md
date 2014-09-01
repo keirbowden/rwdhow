@@ -11,7 +11,7 @@ Bootstrap is a responsive web design framework ... todo - more here
 
 The extercises in this workbook guide you through :
 
-* Creating of a Visualforce page to display the details of a number of opportunities 
+* Creating of a Visualforce page to display the details of a number of cases
 * Adding this Visualforce page to the Salesforce1 application
 * Installing the Twitter Bootstrap framework into your Salesforce instance
 * Creating a second Visualforce page using the Boostrap Responsive Web Design framework
@@ -42,6 +42,47 @@ firstname@lastname.com.
 
 In this tutorial, you will learn how to create and edit a non-responsive Visualforce page using the standard component library. 
 Along the way you’ll familiarize yourself with page creation and the editor. Before you start, please create a free Force.com Developer Edition Environment, as indicated earlier in the “About the Workbook” section.
+
+###Step 1: Navigate to the Visualforce Pages setup page###
+1. Launch your browser and log into Salesforce.
+2. At the top of any Salesforce page, click the down arrow next to your name. From the menu under your name, select Setup.
+3. From the left pane, select Developer -> Pages
+
+Screenshot here?
+
+###Step 2: Create a new Visualforce Page###
+1. On the resulting page, click the New button
+2. Label the new page 'MultiCase'
+3. Tab out of the label input field and the platform automatically names the page 'MultiCase'
+4. Description ... todo  
+5. Check the 'Available for Salesforce mobile apps' box - this is required to make the page available in the Salesrorce1 application.
+6. Click the 'Quick Save' button
+
+The platform automatically inserts some basic markup into your new Visualforce page - you can now access the page by opening a new browser tab or window and navigating to https://<salesforce_instance>/apex/MultiCase. If your Salesforce instance is
+https://na1.salesforce.com for example, the new URL is https://na1.salesforce.com/apex/MultiCase
+
+Screenshot here
+
+###Step 3: Add the multi-case view markup###
+
+1. In the browser tab/window containing the Visualforce page editor, paste the following markup into the Visualforce Markup area and click 'Quick Save':
+
+```
+  <apex:page standardController="Case" recordsetVar="cases" sidebar="false" showheader="false">
+    <apex:sectionHeader title="Cases" />
+    <apex:pageBlock mode="maindetail">
+      <apex:repeat value="{!cases}" var="case">
+        <apex:pageBlockSection title="{!case.CaseNumber}">
+          <apex:outputField value="{!case.Subject}"/>
+          <apex:outputField value="{!case.Priority}"/>
+          <apex:outputField value="{!case.Account.Name}"/>
+          <apex:outputField value="{!case.Contact.Name}"/>
+          <apex:outputField value="{!case.Status}"/>
+        </apex:pageBlockSection>
+      </apex:repeat>
+    </apex:pageBlock>
+  </apex:page>
+```
 
 ## Tutorial 2: Make the page available in the Salesforce1 application ##
 
