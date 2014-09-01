@@ -13,11 +13,15 @@ The extercises in this workbook guide you through :
 
 * Creating of a Visualforce page to display the details of a number of opportunities 
 * Adding this Visualforce page to the Salesforce1 application
-* Accessing the Visualforce page across a number of devices, demonstrating the shortcomings as the device screen size grows smaller
-* Creating a further Visualforce page using the Boostrap Responsive Web Design framework
+* Installing the Twitter Bootstrap framework into your Salesforce instance
+* Creating a second Visualforce page using the Boostrap Responsive Web Design framework
 * Adding this page to the Salesforce1 application
-* Accessing the Visualforce page across a number of devices, showing how the page reflows to make best use of the available real estate
 * Enhancing to the page to improve the user experience on tablet devices
+
+##Audience##
+These tutorials are intended for developers who are new to the Salesforce1 platform or experieced Salesforce administrators who are looking to cross over to Visualforce development.
+
+It is recommended that the exercises in the [Visualforce Workbook](http://www.salesforce.com/us/developer/docs/workbook_vf/workbook_vf.pdf) are completed prior to tackling this workbook
 
 ##Sign Up for Developer Edition##
 
@@ -33,3 +37,16 @@ on developer.salesforce.com, so you’re often better served by choosing a usern
 firstname@lastname.com.
 5. Read and then select the checkbox for the Master Subscription Agreement and then click Submit Registration.
 6. In a moment you’ll receive an email with a login link. Click the link and change your password.
+
+## Tutorial 1: Create a non-responsive Visualforce page ##
+
+In this tutorial, you will learn how to create and edit a non-responsive Visualforce page using the standard component library. 
+Along the way you’ll familiarize yourself with page creation and the editor. Before you start, please create a free Force.com Developer Edition Environment, as indicated earlier in the “About the Workbook” section.
+
+## Tutorial 2: Make the page available in the Salesforce1 application ##
+
+## Tutorial 3: Install the Bootstrap framework ##
+
+## Tutorial 4: Create a responsive Visualforce Page ##
+
+## Tutorial 5: Enhance the page for tablet devices ##
