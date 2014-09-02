@@ -143,7 +143,7 @@ In this tutorial you will download the Boostrap framework and install it into yo
 2. Navigate to the Bootstrap site download page - http://getbootstrap.com/getting-started/#download
 3. Choose the 'Download Bootstrap' option
 
-(screenshot).
+![Bootstrap Download](https://lh4.googleusercontent.com/-wmnZh0n9_wk/VAXujMrYwoI/AAAAAAAAA38/vDoIySwh93g/w334-h351-no/Screen%2BShot%2B2014-09-02%2Bat%2B12.22.41.png)
 
 ###Step2: Install the Bootstrap Zip File as a Static Resource###
 
@@ -155,7 +155,7 @@ In this tutorial you will download the Boostrap framework and install it into yo
 6. Open the file chooser and select the file you downloaded in Step 1
 7. Choose Public for Cache Control
 
-Screentshot?
+![Static Resouce Setup](https://lh6.googleusercontent.com/-K7g2QzFP_AQ/VAXujxk7q1I/AAAAAAAAA4A/kE_8ms9Uayo/w602-h315-no/Screen%2BShot%2B2014-09-02%2Bat%2B12.33.30.png)
 
 at the time of writing the version of Bootstrap is 3.2.0, if you are using a different version then rename the static resource accordingly
 
