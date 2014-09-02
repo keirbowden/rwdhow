@@ -176,7 +176,7 @@ Along the way you’ll familiarize yourself with page creation and the editor. B
 
   <html>
     <head>
-  	  <title>Cases</title>
+      <title>Cases</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       
       <apex:stylesheet value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/css/bootstrap.min.css')}"/>
@@ -191,7 +191,9 @@ Along the way you’ll familiarize yourself with page creation and the editor. B
 </apex:page>
 ```
 2. Click the 'Quick Save' button to validate and save the page
-The `<apex:page>` component specifies the `applyHtmlTag` attribute as false, which stops the platform automatically inserting an HTML `<head>` tag. This is required as you are specifying a meta tag to control the device viewport, which must appear inside the page header.  The meta tag contains two parameters:
+The `<apex:page>` component specifies the `applyHtmlTag` attribute as false, which stops the platform automatically inserting an HTML `<head>` tag. This is required as you are specifying a meta tag to control the device viewport, which must appear inside the page header.  
+
+The meta tag contains two parameters:
 * `width=device-width` makes the viewport the actual size of the device - without this parameter devices such as the iPhone will use a viewport width of 980px, which would require zooming and scrolling to be able to read the page
 * `initial-scale=1.0` makes the initial scale of the viewport 100%. The user can zoom in or out of the page as they require
 
