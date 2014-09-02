@@ -102,11 +102,12 @@ In this tutorial you will configure the page as part of the Salesforce1 applicat
 3. Enter 'CaseMulti' for the tab label
 4. Tab out of the label field - the platform will automatically populate the 'Name' field with 'Case Multi'
 5. Select a tab style
-6. Click the 'Next' button
+
+![Tab Detail](https://lh5.googleusercontent.com/-8vX0lbcTdQc/VAXsvU1IpxI/AAAAAAAAA3A/veSLM_LEXkY/w390-h317-no/newftab.png6. Click the 'Next' button)
+
 7. Leave all settings on the resulting page at their default values and click the 'Next' button
 8. Deselect all applications on the resulting page and click the 'Save' button
 
-Screenshot here?
 
 ###Step3: Add the Tab to the Salesforce1 Menu##
 
@@ -114,11 +115,11 @@ Screenshot here?
 2. Select Mobile Administration -> Mobile Navigation
 3. Move the 'CaseMulti' option from the 'Available' to the 'Selected' list and click the 'Save' button
 
-Screenshot here.
+![Mobile Navigation Setup](https://lh5.googleusercontent.com/rMHmbG9pRTgKmpylrTxTH8UpqnekiVY5aem8aQ_UxGY=w381-h164-p-no)
 
 The tab can now be accessed from the Salesforce1 application via the left hand menu:
 
-Screenshot here
+![Salesforce1 Menu](https://lh4.googleusercontent.com/-JJRSRUYc-Ds/VAXtdq67XaI/AAAAAAAAA3c/C_oW5n28tEQ/w248-h367-no/Screen%2BShot%2B2014-09-02%2Bat%2B07.20.50.png)
 
 The page looks fine on the desktop:
 
