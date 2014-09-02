@@ -40,7 +40,7 @@ firstname@lastname.com.
 
 ## Tutorial 1: Create a non-responsive Visualforce page ##
 
-In this tutorial, you will learn how to create and edit a non-responsive Visualforce page using the standard component library. 
+In this tutorial, you will create a non-responsive Visualforce page using the standard component library. 
 Along the way you’ll familiarize yourself with page creation and the editor. Before you start, please create a free Force.com Developer Edition Environment, as indicated earlier in the “About the Workbook” section.
 
 ###Step 1: Navigate to the Visualforce Pages setup page###
@@ -87,7 +87,9 @@ Your page should look as follows:
 ![MultiCase Page](https://lh3.googleusercontent.com/1aNd7HsZuguXzX4Zguod-9s0j3P2JC1EwV7ALpyf2do=w656-h521-no)
 
 
-## Tutorial 2: Make the page available in the Salesforce1 application ##
+##Tutorial 2: Make the page available in the Salesforce1 application##
+
+In this tutorial you will configure the page as part of the Salesforce1 application.
 
 ###Step1: Navigate to the Tab setup page##
 
@@ -125,14 +127,134 @@ The page looks fine on the desktop:
 
 and on a tablet device - an iPad in this case:
 
-but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line.
-
-
-
-
+but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line:
  
-## Tutorial 3: Install the Bootstrap framework ##
+##Tutorial 3: Install the Bootstrap framework##
+
+In this tutorial you will download the Boostrap framework and install it into your Salesforce instance.  This will provide the basis for building a responsive page later in the workbook.
+
+###Step1: Download the Bootstrap Zip File###
+
+1. Open a new browser window 
+2. Navigate to the Bootstrap site download page - http://getbootstrap.com/getting-started/#download
+3. Choose the 'Download Bootstrap' option
+
+(screenshot).
+
+###Step2: Install the Bootstrap Zip File as a Static Resource###
+
+1. Open the Setup page, as described in Tutorial 1
+2. Select Develop -> Static Resources
+3. On the resulting page click the 'New' button
+4. Enter 'Bootstrap_3_2_0' in the name field
+5. Enter 'Bootstrap framework version 3.2.0 in the Descripton field
+6. Open the file chooser and select the file you downloaded in Step 1
+7. Choose Public for Cache Control
+
+Screentshot?
+
+at the time of writing the version of Bootstrap is 3.2.0, if you are using a different version then rename the static resource accordingly
+
 
 ## Tutorial 4: Create a responsive Visualforce Page ##
+
+In this tutorial, you will learn how to create and edit a non-responsive Visualforce page using the standard component library. 
+Along the way you’ll familiarize yourself with page creation and the editor. Before you start, please create a free Force.com Developer Edition Environment, as indicated earlier in the “About the Workbook” section.
+
+###Step 1: Create the basic Visualforce page###
+1. Open the Setup page, as described in Tutorial 1
+2. From the left pane, select Developer -> Pages
+3. On the resulting page click the 'New' button
+4. Enter 'CaseMultiRWD' for the page label
+5. Tab out of the label field and the platform will automatically populate the name with 'CaseMultiRWD'.
+ 
+###Step 2: Add the Bootstrap Resources###
+1. Modify your Visualforce page to look like the following
+```
+<apex:page doctype="html-5.0" standardController="Case" recordsetVar="cases"
+		   sidebar="false" showheader="false" standardstylesheets="false" applyHtmlTag="false">
+
+  <html>
+    <head>
+  	  <title>Cases</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      
+      <apex:stylesheet value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/css/bootstrap.min.css')}"/>
+      <apex:stylesheet value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/css/bootstrap-theme.min.css')}"/>
+      <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+      <apex:includeScript value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/js/bootstrap.min.js')}"/>
+    </head>
+    
+    <body>
+    </body>
+  </html>
+</apex:page>
+```
+2. Click the 'Quick Save' button to save and validate the page
+The `<apex:page>` component specifies the `applyHtmlTag` attribute as false, which stops the platform automatically inserting an HTML `<head>` tag. This is required as you are specifying a meta tag to control the device viewport, which must appear inside the page header.  The meta tag contains two parameters:
+* `width=device-width` makes the viewport the actual size of the device - without this parameter devices such as the iPhone will use a viewport width of 980px, which would require zooming and scrolling to be able to read the page
+* `initial-scale=1.0` makes the initial scale of the viewport 100%. The user can zoom in or out of the page as they require
+
+The Boostrap framework files are then imported from the static resource uploaded in Tutorial 3. Note that an additional JavaScript resource is included as Bootstrap relies on the JQuery JavaScript library:
+`<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />`
+while we could have downloaded JQuery and made this available as a Static Resource, as it is available on the Google Content Delivery Network it is better to include from there, as it is likely that a user's browser has already encountered the file in this location and cached it for future use.
+
+###Step3: Add a Bootstrap grid to the page###
+Rather than using the standard Visualforce component library, we will use the Bootstrap responsive grid to layout the cases and fields.
+1. Between the opening and closing `<body>` tags, add the following markup:
+```
+      <div class="container-fluid">
+        <apex:repeat value="{!cases}" var="case">
+          <div class="panel panel-primary">
+	  		<div class="panel-heading">
+      		  <h3 class="panel-title"><apex:outputField value="{!case.CaseNumber}"/></h3>
+  		  	</div>
+  		    <div class="panel-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <label>Subject</label>
+                </div>
+                <div class="col-md-4">
+                  <apex:outputText value="{!case.Subject}" />
+                </div>
+                <div class="col-md-2">
+                  <label>Priority</label>
+                </div>
+                <div class="col-md-4">
+                  <apex:outputText value="{!case.Priority}" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <label>Account</label>
+                </div>
+                <div class="col-md-4">
+                  <apex:outputText value="{!case.Account.Name}" />
+                </div>
+                <div class="col-md-2">
+                  <label>Contact</label>
+                </div>
+                <div class="col-md-4">
+                  <apex:outputText value="{!case.Contact.Name}" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <label>Status</label>
+                </div>
+                <div class="col-md-4">
+                  <apex:outputText value="{!case.Status}" />
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </apex:repeat>
+      </div>
+```
+
+
 
 ## Tutorial 5: Enhance the page for tablet devices ##
