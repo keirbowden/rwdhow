@@ -128,6 +128,7 @@ The page looks fine on the desktop:
 and on a tablet device - an iPad in this case:
 
 but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line:
+![Visualforce Page iPhone](https://lh4.googleusercontent.com/aNAdx07ziyuPybwmI116_J-AgXMOoQngH_77uCZAUEc=w363-h644-no)
  
 ##Tutorial 3: Install the Bootstrap framework##
 
@@ -190,7 +191,7 @@ Along the way you’ll familiarize yourself with page creation and the editor. B
   </html>
 </apex:page>
 ```
-2. Click the 'Quick Save' button to save and validate the page
+2. Click the 'Quick Save' button to validate and save the page
 The `<apex:page>` component specifies the `applyHtmlTag` attribute as false, which stops the platform automatically inserting an HTML `<head>` tag. This is required as you are specifying a meta tag to control the device viewport, which must appear inside the page header.  The meta tag contains two parameters:
 * `width=device-width` makes the viewport the actual size of the device - without this parameter devices such as the iPhone will use a viewport width of 980px, which would require zooming and scrolling to be able to read the page
 * `initial-scale=1.0` makes the initial scale of the viewport 100%. The user can zoom in or out of the page as they require
@@ -205,11 +206,14 @@ Rather than using the standard Visualforce component library, we will use the Bo
 ```
       <div class="container-fluid">
         <apex:repeat value="{!cases}" var="case">
+        
           <div class="panel panel-primary">
-	  		<div class="panel-heading">
-      		  <h3 class="panel-title"><apex:outputField value="{!case.CaseNumber}"/></h3>
-  		  	</div>
-  		    <div class="panel-body">
+            <div class="panel-heading">
+      	      <h3 class="panel-title"><apex:outputField value="{!case.CaseNumber}"/></h3>
+  	    </div>
+  	    
+  	    <div class="panel-body">
+  	    
               <div class="row">
                 <div class="col-md-2">
                   <label>Subject</label>
@@ -254,6 +258,16 @@ Rather than using the standard Visualforce component library, we will use the Bo
         </apex:repeat>
       </div>
 ```
+2. Click the 'Quick Save' button to validate and save the updated page
+3. Follow Tutorial 2 to add this new page to the Salesforce1 application, substituting 'CaseMultiRWD' for the tab name and Visualforce page.
+
+Open the Salesforce1 desktop application via the URL https://<salesforce_instance>/one/one.app and access the responsive Visualforce page via the 'CaseMultiRWD' menu option:
+![Responsive Page Desktop](https://lh6.googleusercontent.com/-93aVZwHT8iM/VAXZ9ZwZnpI/AAAAAAAAA0M/hDWlnxg5AU4/w773-h501-no/Screen%2BShot%2B2014-09-02%2Bat%2B15.34.02.png)
+Each case on the page is displayed inside a Bootstrap panel, defined through the style classes on the enclosing div elements - `<div class="panel panel-primary">`. Inside the panel, the case details are presented in a 12 column grid format, again defined through the `row` and `col-md-*` style classes on the enclosing div elements. the `md-*` suffix specifies the number of columns that elements should span for devices with a medium sized screen and above.
+When the page is viewed on a device with a small (tablet landscape) or extra-small (mobile phone), the default bootstrap behaviour is to stack the columns one on top of the other:
+
+![Responsive Page iPhone](https://lh6.googleusercontent.com/-tnp3jhLxM7o/VAXYx5BAWqI/AAAAAAAAAz0/0PztwgUSAfo/w363-h644-no/IMG_1433.jpg)
+
 
 
 
