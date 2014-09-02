@@ -130,6 +130,7 @@ and on a tablet device - an iPad in this case:
 ![Visualforce Page iPad](https://lh3.googleusercontent.com/-nf-8QTCCO9g/VAXqlvzLzaI/AAAAAAAAA1Q/g1st8kcSndU/w860-h645-no/IMG_0098.PNG)
 
 but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line:
+
 ![Visualforce Page iPhone](https://lh4.googleusercontent.com/aNAdx07ziyuPybwmI116_J-AgXMOoQngH_77uCZAUEc=w363-h644-no)
  
 ##Tutorial 3: Install the Bootstrap framework##
