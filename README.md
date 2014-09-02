@@ -121,13 +121,9 @@ The tab can now be accessed from the Salesforce1 application via the left hand m
 
 ![Salesforce1 Menu](https://lh4.googleusercontent.com/-JJRSRUYc-Ds/VAXtdq67XaI/AAAAAAAAA3c/C_oW5n28tEQ/w248-h367-no/Screen%2BShot%2B2014-09-02%2Bat%2B07.20.50.png)
 
-The page looks fine on the desktop:
+The page looks fine on a desktop or table device:
 
 ![Visualforce Page Desktop](https://lh4.googleusercontent.com/-nf-8QTCCO9g/VAXqlvzLzaI/AAAAAAAAA1Q/g1st8kcSndU/w812-h609-no/IMG_0098.PNG)
-
-and on a tablet device - an iPad in this case:
-
-![Visualforce Page iPad](https://lh3.googleusercontent.com/-nf-8QTCCO9g/VAXqlvzLzaI/AAAAAAAAA1Q/g1st8kcSndU/w860-h645-no/IMG_0098.PNG)
 
 but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line:
 
