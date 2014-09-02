@@ -262,13 +262,80 @@ Rather than using the standard Visualforce component library, we will use the Bo
 3. Follow Tutorial 2 to add this new page to the Salesforce1 application, substituting 'CaseMultiRWD' for the tab name and Visualforce page.
 
 Open the Salesforce1 desktop application via the URL https://<salesforce_instance>/one/one.app and access the responsive Visualforce page via the 'CaseMultiRWD' menu option:
+
 ![Responsive Page Desktop](https://lh6.googleusercontent.com/-93aVZwHT8iM/VAXZ9ZwZnpI/AAAAAAAAA0M/hDWlnxg5AU4/w773-h501-no/Screen%2BShot%2B2014-09-02%2Bat%2B15.34.02.png)
+
 Each case on the page is displayed inside a Bootstrap panel, defined through the style classes on the enclosing div elements - `<div class="panel panel-primary">`. Inside the panel, the case details are presented in a 12 column grid format, again defined through the `row` and `col-md-*` style classes on the enclosing div elements. the `md-*` suffix specifies the number of columns that elements should span for devices with a medium sized screen and above.
 When the page is viewed on a device with a small (tablet landscape) or extra-small (mobile phone), the default bootstrap behaviour is to stack the columns one on top of the other:
 
 ![Responsive Page iPhone](https://lh6.googleusercontent.com/-tnp3jhLxM7o/VAXYx5BAWqI/AAAAAAAAAz0/0PztwgUSAfo/w363-h644-no/IMG_1433.jpg)
 
+While this layout is fine for a mobile phone, on a tablet it results in a lot of wasted screen real-estate:
 
-
+In the next tutorial, you will edit the page and change the behaviour for small devices to display the field label and contents on a single line.
 
 ## Tutorial 5: Enhance the page for tablet devices ##
+1. Replace the contents of the div element with the `panel-body` style class with the following markup:
+```
+              <div class="row">
+                <div class="col-sm-4 col-md-2">
+                  <label>Subject</label>
+                </div>
+                <div class="col-sm-8 col-md-4">
+                  <apex:outputText value="{!case.Subject}" />
+                </div>
+                
+                <div class="clearfix visible-sm-inline-block"></div>
+                
+                <div class="col-sm-4 col-md-2">
+                  <label>Priority</label>
+                </div>
+                <div class="col-sm-8 col-md-4">
+                  <apex:outputText value="{!case.Priority}" />
+                </div>
+              </div>
+
+              <div class="row">
+		      
+                <div class="clearfix visible-sm-inline-block"></div>
+                
+                <div class="col-sm-4 col-md-2">
+                  <label>Account</label>
+                </div>
+                <div class="col-sm-8 col-md-4">
+                  <apex:outputText value="{!case.Account.Name}" />
+                </div>
+                
+                <div class="clearfix visible-sm-inline-block"></div>
+                
+                <div class="col-sm-4 col-md-2">
+                  <label>Contact</label>
+                </div>
+                <div class="col-sm-8 col-md-4">
+                  <apex:outputText value="{!case.Contact.Name}" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="clearfix visible-sm-inline-block"></div>
+                
+                <div class="col-sm-4 col-md-2">
+                  <label>Status</label>
+                </div>
+                <div class="col-sm-8 col-md-4">
+                  <apex:outputText value="{!case.Status}" />
+                </div>
+                
+                <div class="clearfix visible-sm-inline-block"></div>
+                
+                <div class="col-sm-4 col-md-2">
+                  <label>Status</label>
+                </div>
+                <div class="col-sm-8 col-md-4">
+                  <apex:outputText value="{!case.Status}" />
+                </div>
+              </div>
+              
+```
+Each field fills a single row on a small device, via the `col-sm-*` style classes - the label spanning 4 columns via the `col-sm-4` and the value spanning 8 columns via the `col-sm-8` classes. The style classes for medium devices and upwards are retained, ensuring the user experience for those devices is unaffected.  The final change for tablet devices handles case subjects of different lengths - Bootstrap's default behaviour is to display the next label to the right of a subject element that is larger than the standard row size, which breaks the user interface.  By adding a div element with the style class of `clearfix`, Bootstrap knows to move the page flow onto a new row.  The `visible-sm-inline-block` ensures that the new rows are only applied to small devices. 
+Accessing the page in a tablet 
