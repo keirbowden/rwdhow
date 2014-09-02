@@ -15,7 +15,7 @@ The extercises in this workbook guide you through :
 * Adding this Visualforce page to the Salesforce1 application
 * Installing the Twitter Bootstrap framework into your Salesforce instance
 * Creating a second Visualforce page using the Boostrap Responsive Web Design framework
-* Adding this page to the Salesforce1 application
+* Adding this page to the Salesforce1 applications
 * Enhancing to the page to improve the user experience on tablet devices
 
 ##Audience##
@@ -48,18 +48,15 @@ Along the way you’ll familiarize yourself with page creation and the editor. B
 2. At the top of any Salesforce page, click the down arrow next to your name. From the menu under your name, select Setup.
 3. From the left pane, select Developer -> Pages
 
-Screenshot here?
-
 ###Step 2: Create a new Visualforce Page###
 1. On the resulting page, click the New button
 2. Label the new page 'CaseMulti'
 3. Tab out of the label input field and the platform automatically names the page 'CaseMulti'
-4. Description ... todo  
-5. Check the 'Available for Salesforce mobile apps' box - this is required to make the page available in the Salesrorce1 application.
-6. Click the 'Quick Save' button
+4. Check the 'Available for Salesforce mobile apps' box - this is required to make the page available in the Salesrorce1 application.
+5. Click the 'Quick Save' button
 
-The platform automatically inserts some basic markup into your new Visualforce page - you can now access the page by opening a new browser tab or window and navigating to https://<salesforce_instance>/apex/MultiCase. If your Salesforce instance is
-https://na1.salesforce.com for example, the new URL is https://na1.salesforce.com/apex/MultiCase
+The platform automatically inserts some basic markup into your new Visualforce page - you can now access the page by opening a new browser tab or window and navigating to `https://<salesforce_instance>/apex/MultiCase`. If your Salesforce instance is
+https://na1.salesforce.com for example, the new URL is `https://na1.salesforce.com/apex/MultiCase`
 
 ###Step 3: Add the multi-case view markup###
 
@@ -125,7 +122,11 @@ Screenshot here
 
 The page looks fine on the desktop:
 
+![Visualforce Page Desktop](https://lh4.googleusercontent.com/-nf-8QTCCO9g/VAXqlvzLzaI/AAAAAAAAA1Q/g1st8kcSndU/w812-h609-no/IMG_0098.PNG)
+
 and on a tablet device - an iPad in this case:
+
+![Visualforce Page iPad](https://lh3.googleusercontent.com/-nf-8QTCCO9g/VAXqlvzLzaI/AAAAAAAAA1Q/g1st8kcSndU/w860-h645-no/IMG_0098.PNG)
 
 but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line:
 ![Visualforce Page iPhone](https://lh4.googleusercontent.com/aNAdx07ziyuPybwmI116_J-AgXMOoQngH_77uCZAUEc=w363-h644-no)
@@ -272,6 +273,8 @@ When the page is viewed on a device with a small (tablet landscape) or extra-sma
 
 While this layout is fine for a mobile phone, on a tablet it results in a lot of wasted screen real-estate:
 
+![Responsive Page iPad](https://lh4.googleusercontent.com/-PjvX-k3XH3Q/VAXpKHsgYfI/AAAAAAAAA0g/LgRjvbGWwgs/w484-h645-no/IMG_0099.PNG)
+
 In the next tutorial, you will edit the page and change the behaviour for small devices to display the field label and contents on a single line.
 
 ## Tutorial 5: Enhance the page for tablet devices ##
@@ -285,7 +288,7 @@ In the next tutorial, you will edit the page and change the behaviour for small 
                   <apex:outputText value="{!case.Subject}" />
                 </div>
                 
-                <div class="clearfix visible-sm-inline-block"></div>
+                <div class="clearfix visible-sm"></div>
                 
                 <div class="col-sm-4 col-md-2">
                   <label>Priority</label>
@@ -297,7 +300,7 @@ In the next tutorial, you will edit the page and change the behaviour for small 
 
               <div class="row">
 		      
-                <div class="clearfix visible-sm-inline-block"></div>
+                <div class="clearfix visible-sm"></div>
                 
                 <div class="col-sm-4 col-md-2">
                   <label>Account</label>
@@ -306,7 +309,7 @@ In the next tutorial, you will edit the page and change the behaviour for small 
                   <apex:outputText value="{!case.Account.Name}" />
                 </div>
                 
-                <div class="clearfix visible-sm-inline-block"></div>
+                <div class="clearfix visible-sm"></div>
                 
                 <div class="col-sm-4 col-md-2">
                   <label>Contact</label>
@@ -317,16 +320,7 @@ In the next tutorial, you will edit the page and change the behaviour for small 
               </div>
 
               <div class="row">
-                <div class="clearfix visible-sm-inline-block"></div>
-                
-                <div class="col-sm-4 col-md-2">
-                  <label>Status</label>
-                </div>
-                <div class="col-sm-8 col-md-4">
-                  <apex:outputText value="{!case.Status}" />
-                </div>
-                
-                <div class="clearfix visible-sm-inline-block"></div>
+                <div class="clearfix visible-sm"></div>
                 
                 <div class="col-sm-4 col-md-2">
                   <label>Status</label>
@@ -337,5 +331,9 @@ In the next tutorial, you will edit the page and change the behaviour for small 
               </div>
               
 ```
-Each field fills a single row on a small device, via the `col-sm-*` style classes - the label spanning 4 columns via the `col-sm-4` and the value spanning 8 columns via the `col-sm-8` classes. The style classes for medium devices and upwards are retained, ensuring the user experience for those devices is unaffected.  The final change for tablet devices handles case subjects of different lengths - Bootstrap's default behaviour is to display the next label to the right of a subject element that is larger than the standard row size, which breaks the user interface.  By adding a div element with the style class of `clearfix`, Bootstrap knows to move the page flow onto a new row.  The `visible-sm-inline-block` ensures that the new rows are only applied to small devices. 
-Accessing the page in a tablet 
+Each field fills a single row on a small device, via the `col-sm-*` style classes - the label spanning 4 columns via the `col-sm-4` and the value spanning 8 columns via the `col-sm-8` classes. 
+The style classes for medium devices and upwards are retained, ensuring the user experience for those devices is unaffected.  
+The final change for tablet devices handles case subjects of different lengths - Bootstrap's default behaviour is to display the next label to the right of a subject element that is larger than the standard row size, which breaks the user interface.
+By adding a div element with the style class of `clearfix`, Bootstrap knows to move the page flow onto a new row.  The `visible-sm-inline-block` ensures that the new rows are only applied to small devices. 
+Accessing the page in a tablet device now displays the field label and value on a single line, allowing more cases to be viewed simultaneously:
+![Improved Responsive Page iPad](https://lh4.googleusercontent.com/vg21th7ITuVLw7FarWVATrG1HMhcdAivuiHlP_H0A8o=w484-h645-no)
