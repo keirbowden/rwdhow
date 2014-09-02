@@ -52,16 +52,14 @@ Screenshot here?
 
 ###Step 2: Create a new Visualforce Page###
 1. On the resulting page, click the New button
-2. Label the new page 'MultiCase'
-3. Tab out of the label input field and the platform automatically names the page 'MultiCase'
+2. Label the new page 'CaseMulti'
+3. Tab out of the label input field and the platform automatically names the page 'CaseMulti'
 4. Description ... todo  
 5. Check the 'Available for Salesforce mobile apps' box - this is required to make the page available in the Salesrorce1 application.
 6. Click the 'Quick Save' button
 
 The platform automatically inserts some basic markup into your new Visualforce page - you can now access the page by opening a new browser tab or window and navigating to https://<salesforce_instance>/apex/MultiCase. If your Salesforce instance is
 https://na1.salesforce.com for example, the new URL is https://na1.salesforce.com/apex/MultiCase
-
-Screenshot here
 
 ###Step 3: Add the multi-case view markup###
 
@@ -84,8 +82,55 @@ Screenshot here
   </apex:page>
 ```
 
+Your page should look as follows:
+
+![MultiCase Page](https://lh3.googleusercontent.com/1aNd7HsZuguXzX4Zguod-9s0j3P2JC1EwV7ALpyf2do=w656-h521-no)
+
+
 ## Tutorial 2: Make the page available in the Salesforce1 application ##
 
+###Step1: Navigate to the Tab setup page##
+
+1. Open the Setup menu, as described in Tutorial 1.
+2. Select Create -> Tabs
+3. Scroll down to the Visualforce Tabs section
+
+ ![Tab Setup Page](https://lh3.googleusercontent.com/rKW6ghtSegtgEMyxsYIO6qH9_6Ml6S4JzAhKM-Qem9k=w489-h104)
+
+###Step2: Create a Tab for the Visualforce Page##
+1. Click the 'New' button
+2. Choose 'CaseMulti' from the picklst of Visualforce Pages
+3. Enter 'CaseMulti' for the tab label
+4. Tab out of the label field - the platform will automatically populate the 'Name' field with 'Case Multi'
+5. Select a tab style
+6. Click the 'Next' button
+7. Leave all settings on the resulting page at their default values and click the 'Next' button
+8. Deselect all applications on the resulting page and click the 'Save' button
+
+Screenshot here?
+
+###Step3: Add the Tab to the Salesforce1 Menu##
+
+1. Open the Setup menu, as described in Tutorial 1.
+2. Select Mobile Administration -> Mobile Navigation
+3. Move the 'CaseMulti' option from the 'Available' to the 'Selected' list and click the 'Save' button
+
+Screenshot here.
+
+The tab can now be accessed from the Salesforce1 application via the left hand menu:
+
+Screenshot here
+
+The page looks fine on the desktop:
+
+and on a tablet device - an iPad in this case:
+
+but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line.
+
+
+
+
+ 
 ## Tutorial 3: Install the Bootstrap framework ##
 
 ## Tutorial 4: Create a responsive Visualforce Page ##
