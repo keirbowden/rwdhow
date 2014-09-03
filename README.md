@@ -290,66 +290,70 @@ Bootstrap provides styling for four classes of device:
 ## Tutorial 5: Enhance the page for tablet devices ##
 1. Replace the contents of the div element with the `panel-body` style class with the following markup:
 ```
-              <div class="row">
-                <div class="col-sm-4 col-md-2">
-                  <label>Subject</label>
-                </div>
-                <div class="col-sm-8 col-md-4">
-                  <apex:outputText value="{!case.Subject}" />
-                </div>
+  <div class="row">
+    <div class="col-sm-4 col-md-2">
+       <label>Subject</label>
+    </div>
+    <div class="col-sm-8 col-md-4">
+      <apex:outputText value="{!case.Subject}" />
+    </div>
                 
-                <div class="clearfix visible-sm"></div>
+    <div class="clearfix visible-sm"></div>
                 
-                <div class="col-sm-4 col-md-2">
-                  <label>Priority</label>
-                </div>
-                <div class="col-sm-8 col-md-4">
-                  <apex:outputText value="{!case.Priority}" />
-                </div>
-              </div>
+    <div class="col-sm-4 col-md-2">
+      <label>Priority</label>
+    </div>
+    <div class="col-sm-8 col-md-4">
+      <apex:outputText value="{!case.Priority}" />
+    </div>
+  </div>
 
-              <div class="row">
+  <div class="row">
 		      
-                <div class="clearfix visible-sm"></div>
+    <div class="clearfix visible-sm"></div>
                 
-                <div class="col-sm-4 col-md-2">
-                  <label>Account</label>
-                </div>
-                <div class="col-sm-8 col-md-4">
-                  <apex:outputText value="{!case.Account.Name}" />
-                </div>
+    <div class="col-sm-4 col-md-2">
+      <label>Account</label>
+    </div>
+    <div class="col-sm-8 col-md-4">
+      <apex:outputText value="{!case.Account.Name}" />
+    </div>
                 
-                <div class="clearfix visible-sm"></div>
+    <div class="clearfix visible-sm"></div>
                 
-                <div class="col-sm-4 col-md-2">
-                  <label>Contact</label>
-                </div>
-                <div class="col-sm-8 col-md-4">
-                  <apex:outputText value="{!case.Contact.Name}" />
-                </div>
-              </div>
+    <div class="col-sm-4 col-md-2">
+      <label>Contact</label>
+    </div>
+    <div class="col-sm-8 col-md-4">
+      <apex:outputText value="{!case.Contact.Name}" />
+    </div>
+  </div>
 
-              <div class="row">
-                <div class="clearfix visible-sm"></div>
+  <div class="row">
+    <div class="clearfix visible-sm"></div>
                 
-                <div class="col-sm-4 col-md-2">
-                  <label>Status</label>
-                </div>
-                <div class="col-sm-8 col-md-4">
-                  <apex:outputText value="{!case.Status}" />
-                </div>
-              </div>
+    <div class="col-sm-4 col-md-2">
+      <label>Status</label>
+    </div>
+    <div class="col-sm-8 col-md-4">
+      <apex:outputText value="{!case.Status}" />
+    </div>
+  </div>
               
 ```
 Each field fills a single row on a small device, via the `col-sm-*` style classes - the label spanning 4 columns via the `col-sm-4` and the value spanning 8 columns via the `col-sm-8` classes. 
+
 The style classes for medium devices and upwards are retained, ensuring the user experience for those devices is unaffected.  
+
 The final change for tablet devices handles case subjects of different lengths - Bootstrap's default behaviour is to display the next label to the right of a subject element that is taller than the standard row size, which breaks the user interface. By adding a div element with the style class of `clearfix`, Bootstrap knows to move the page flow onto a new row.  The `visible-sm-inline-block` style class ensures that the new rows are only applied to small devices. 
+
 Accessing the page in a tablet device now displays the field label and value on a single line, allowing more cases to be viewed simultaneously:
+
 ![Improved Responsive Page iPad](https://lh4.googleusercontent.com/vg21th7ITuVLw7FarWVATrG1HMhcdAivuiHlP_H0A8o=w484-h645-no)
 
 ###Summary###
 In this workbook you have used a couple of the features of the Bootstrap responsive web design framework - panels and the responsive grid. Bootstrap provides much more than this, including a rich set of reusable components and more than a dozen JQuery plugins to bring those components to life. As you may have noticed, when using Bootstrap in a Visualforce page, very few of the Visualforce standard components are used, and none of those components that provide layout or styling.
 
 ####Learning More###
-Learn more about the full capabilities of [Bootstrap](http://getbootstrap.com/).
-Read Ethan Marcotte's original A List Apart article that introduced [Responsive Web Design[(http://alistapart.com/article/responsive-web-design).
+* Learn more about the full capabilities of [Bootstrap](http://getbootstrap.com/).
+* Read Ethan Marcotte's original A List Apart article that introduced the world to [Responsive Web Design](http://alistapart.com/article/responsive-web-design).
