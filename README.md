@@ -11,7 +11,7 @@ Bootstrap is a responsive web design framework ... todo - more here
 
 The extercises in this workbook guide you through :
 
-* Creating of a Visualforce page to display the details of a number of cases
+* Creating a Visualforce page to display the details of a number of cases
 * Adding this Visualforce page to the Salesforce1 application
 * Installing the Twitter Bootstrap framework into your Salesforce instance
 * Creating a second Visualforce page using the Boostrap Responsive Web Design framework
