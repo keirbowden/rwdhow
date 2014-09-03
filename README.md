@@ -167,29 +167,31 @@ Along the way you’ll familiarize yourself with page creation and the editor. B
 3. On the resulting page click the 'New' button
 4. Enter 'CaseMultiRWD' for the page label
 5. Tab out of the label field and the platform will automatically populate the name with 'CaseMultiRWD'.
+6. Check the 'Available for Salesforce mobile apps' box - this is required to make the page available in the Salesrorce1 application.
+
  
 ###Step 2: Add the Bootstrap Resources###
 1. Modify your Visualforce page to look like the following
-```
-<apex:page doctype="html-5.0" standardController="Case" recordsetVar="cases"
+  ```
+  <apex:page doctype="html-5.0" standardController="Case" recordsetVar="cases"
 		   sidebar="false" showheader="false" standardstylesheets="false" applyHtmlTag="false">
 
-  <html>
-    <head>
-      <title>Cases</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <html>
+      <head>
+        <title>Cases</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       
-      <apex:stylesheet value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/css/bootstrap.min.css')}"/>
-      <apex:stylesheet value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/css/bootstrap-theme.min.css')}"/>
-      <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
-      <apex:includeScript value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/js/bootstrap.min.js')}"/>
-    </head>
+        <apex:stylesheet value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/css/bootstrap.min.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/css/bootstrap-theme.min.css')}"/>
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+        <apex:includeScript value="{!URLFOR($Resource.Bootstrap_3_2_0, 'bootstrap-3.2.0-dist/js/bootstrap.min.js')}"/>
+      </head>
     
-    <body>
-    </body>
-  </html>
-</apex:page>
-```
+      <body>
+      </body>
+    </html>
+  </apex:page>
+  ```
 2. Click the 'Quick Save' button to validate and save the page
 The `<apex:page>` component specifies the `applyHtmlTag` attribute as false, which stops the platform automatically inserting an HTML `<head>` tag. This is required as you are specifying a meta tag to control the device viewport, which must appear inside the page header.  
 
@@ -201,10 +203,10 @@ The Boostrap framework files are then imported from the static resource uploaded
 `<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />`
 while we could have downloaded JQuery and made this available as a Static Resource, as it is available on the Google Content Delivery Network it is better to include from there, as it is likely that a user's browser has already encountered the file in this location and cached it for future use.
 
-###Step3: Add a Bootstrap grid to the page###
+###Step3: Add a Bootstrap grid to the Panels###
 Rather than using the standard Visualforce component library, we will use the Bootstrap responsive grid to layout the cases and fields.
 1. Between the opening and closing `<body>` tags, add the following markup:
-```
+  ```
       <div class="container-fluid">
         <apex:repeat value="{!cases}" var="case">
         
@@ -258,7 +260,7 @@ Rather than using the standard Visualforce component library, we will use the Bo
           </div>
         </apex:repeat>
       </div>
-```
+  ```
 2. Click the 'Quick Save' button to validate and save the updated page
 3. Follow Tutorial 2 to add this new page to the Salesforce1 application, substituting 'CaseMultiRWD' for the tab name and Visualforce page.
 
