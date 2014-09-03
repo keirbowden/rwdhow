@@ -83,6 +83,8 @@ Your page should look as follows:
 
 ![MultiCase Page](https://lh3.googleusercontent.com/1aNd7HsZuguXzX4Zguod-9s0j3P2JC1EwV7ALpyf2do=w656-h521-no)
 
+####Tell me more...####
+The page uses a [Standard List Controller](https://www.salesforce.com/us/developer/docs/pages/index_Left.htm#CSHID=pages_controller_sosc_about.htm|StartTopic=Content%2Fpages_controller_sosc_about.htm|SkinName=webhelp). This controller provides access to a collection of records, based on the last List View that the user has accessed. The `recordsetVar` attribute specifies the name of the property that is used to access the collection of records.
 
 ##Tutorial 2: Make the page available in the Salesforce1 application##
 
@@ -108,7 +110,6 @@ In this tutorial you will configure the page as part of the Salesforce1 applicat
 7. Leave all settings on the resulting page at their default values and click the 'Next' button
 8. Deselect all applications on the resulting page and click the 'Save' button
 
-
 ###Step3: Add the Tab to the Salesforce1 Menu##
 
 1. Open the Setup menu, as described in Tutorial 1.
@@ -121,11 +122,11 @@ The tab can now be accessed from the Salesforce1 application via the left hand m
 
 ![Salesforce1 Menu](https://lh4.googleusercontent.com/-JJRSRUYc-Ds/VAXtdq67XaI/AAAAAAAAA3c/C_oW5n28tEQ/w248-h367-no/Screen%2BShot%2B2014-09-02%2Bat%2B07.20.50.png)
 
-The page looks fine on a desktop or table device:
+The page looks fine on a desktop or tablet device:
 
 ![Visualforce Page Desktop](https://lh4.googleusercontent.com/-nf-8QTCCO9g/VAXqlvzLzaI/AAAAAAAAA1Q/g1st8kcSndU/w812-h609-no/IMG_0098.PNG)
 
-but on a mobile phone, the UI is less than ideal - the Subject field contents and Account Name label break onto multiple lines, displaying only one or two words per line:
+but on a mobile phone, the user interface is less than ideal - the `Subject` field value and `Account Name` label break onto multiple lines, displaying only one or two words per line:
 
 ![Visualforce Page iPhone](https://lh4.googleusercontent.com/aNAdx07ziyuPybwmI116_J-AgXMOoQngH_77uCZAUEc=w363-h644-no)
  
@@ -154,7 +155,6 @@ In this tutorial you will download the Boostrap framework and install it into yo
 ![Static Resouce Setup](https://lh6.googleusercontent.com/-K7g2QzFP_AQ/VAXujxk7q1I/AAAAAAAAA4A/kE_8ms9Uayo/w602-h315-no/Screen%2BShot%2B2014-09-02%2Bat%2B12.33.30.png)
 
 at the time of writing the version of Bootstrap is 3.2.0, if you are using a different version then rename the static resource accordingly
-
 
 ## Tutorial 4: Create a responsive Visualforce Page ##
 
@@ -266,16 +266,24 @@ Open the Salesforce1 desktop application via the URL https://<salesforce_instanc
 
 ![Responsive Page Desktop](https://lh6.googleusercontent.com/-93aVZwHT8iM/VAXZ9ZwZnpI/AAAAAAAAA0M/hDWlnxg5AU4/w773-h501-no/Screen%2BShot%2B2014-09-02%2Bat%2B15.34.02.png)
 
-Each case on the page is displayed inside a Bootstrap panel, defined through the style classes on the enclosing div elements - `<div class="panel panel-primary">`. Inside the panel, the case details are presented in a 12 column grid format, again defined through the `row` and `col-md-*` style classes on the enclosing div elements. the `md-*` suffix specifies the number of columns that elements should span for devices with a medium sized screen and above.
+Each case on the page is displayed inside a Bootstrap panel, defined through the style classes on the enclosing div elements - `<div class="panel panel-primary">`. 
+Inside the panel, the case details are presented in a 12 column grid format, again defined through the `row` and `col-md-*` style classes on the enclosing div elements. the `md-*` suffix specifies the number of columns that elements should span for devices with a medium sized screen and above.
 When the page is viewed on a device with a small (tablet landscape) or extra-small (mobile phone), the default bootstrap behaviour is to stack the columns one on top of the other:
 
 ![Responsive Page iPhone](https://lh6.googleusercontent.com/-tnp3jhLxM7o/VAXYx5BAWqI/AAAAAAAAAz0/0PztwgUSAfo/w363-h644-no/IMG_1433.jpg)
 
-While this layout is fine for a mobile phone, on a tablet it results in a lot of wasted screen real-estate:
+Each field label and value now uses the full device width, which fixes the user interface issues identified in Tutorial 1.  However, while this layout looks good on a mobile phone, it is also applied to a tablet device, resulting in a lot of wasted screen real-estate outside of the `Subject` field.
 
 ![Responsive Page iPad](https://lh4.googleusercontent.com/-PjvX-k3XH3Q/VAXpKHsgYfI/AAAAAAAAA0g/LgRjvbGWwgs/w484-h645-no/IMG_0099.PNG)
 
 In the next tutorial, you will edit the page and change the behaviour for small devices to display the field label and contents on a single line.
+
+####Tell me more...####
+Bootstrap provides styling for four classes of device:
+* Large, with a screen size of > 1200px
+* Medium, with a screen size of 992px - 1200px
+* Small, with a screen size of 768px - 992px
+* Extra-small, with a screen size of < 768px
 
 ## Tutorial 5: Enhance the page for tablet devices ##
 1. Replace the contents of the div element with the `panel-body` style class with the following markup:
@@ -333,7 +341,13 @@ In the next tutorial, you will edit the page and change the behaviour for small 
 ```
 Each field fills a single row on a small device, via the `col-sm-*` style classes - the label spanning 4 columns via the `col-sm-4` and the value spanning 8 columns via the `col-sm-8` classes. 
 The style classes for medium devices and upwards are retained, ensuring the user experience for those devices is unaffected.  
-The final change for tablet devices handles case subjects of different lengths - Bootstrap's default behaviour is to display the next label to the right of a subject element that is larger than the standard row size, which breaks the user interface.
-By adding a div element with the style class of `clearfix`, Bootstrap knows to move the page flow onto a new row.  The `visible-sm-inline-block` ensures that the new rows are only applied to small devices. 
+The final change for tablet devices handles case subjects of different lengths - Bootstrap's default behaviour is to display the next label to the right of a subject element that is taller than the standard row size, which breaks the user interface. By adding a div element with the style class of `clearfix`, Bootstrap knows to move the page flow onto a new row.  The `visible-sm-inline-block` style class ensures that the new rows are only applied to small devices. 
 Accessing the page in a tablet device now displays the field label and value on a single line, allowing more cases to be viewed simultaneously:
 ![Improved Responsive Page iPad](https://lh4.googleusercontent.com/vg21th7ITuVLw7FarWVATrG1HMhcdAivuiHlP_H0A8o=w484-h645-no)
+
+###Summary###
+In this workbook you have used a couple of the features of the Bootstrap responsive web design framework - panels and the responsive grid. Bootstrap provides much more than this, including a rich set of reusable components and more than a dozen JQuery plugins to bring those components to life. As you may have noticed, when using Bootstrap in a Visualforce page, very few of the Visualforce standard components are used, and none of those components that provide layout or styling.
+
+####Learning More###
+Learn more about the full capabilities of [Bootstrap](http://getbootstrap.com/).
+Read Ethan Marcotte's original A List Apart article that introduced [Responsive Web Design[(http://alistapart.com/article/responsive-web-design).
